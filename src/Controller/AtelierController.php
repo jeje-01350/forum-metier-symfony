@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Atelier;
 use App\Form\AtelierType;
 use App\Repository\AtelierRepository;
+use App\Repository\ForumRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,11 +16,15 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/atelier')]
 class AtelierController extends AbstractController
 {
+    /**
+     * @throws NonUniqueResultException
+     */
     #[Route('/', name: 'app_atelier_index', methods: ['GET'])]
-    public function index(AtelierRepository $atelierRepository): Response
+    public function index(AtelierRepository $atelierRepository, ForumRepository $forumRepository): Response
     {
         return $this->render('atelier/index.html.twig', [
             'ateliers' => $atelierRepository->findAll(),
+            'forum' => $forumRepository->findClosestForum(),
         ]);
     }
 

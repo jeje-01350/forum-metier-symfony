@@ -3,38 +3,30 @@
 {% block title %}Atelier index{% endblock %}
 
 {% block body %}
-    <h1 class="text-3xl text-yellow-600 font-bold underline">
-        Atelier index
-    </h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>HeureDebut</th>
-                <th>HeureFin</th>
-                <th>Intervenants</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for atelier in ateliers %}
-            <tr>
-                <td>{{ atelier.id }}</td>
-                <td>{{ atelier.heureDebut ? atelier.heureDebut|date('H:i:s') : '' }}</td>
-                <td>{{ atelier.heureFin ? atelier.heureFin|date('H:i:s') : '' }}</td>
-                <td>{{ atelier.intervenants ? atelier.intervenants|join(', ') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_atelier_show', {'id': atelier.id}) }}">show</a>
-                    <a href="{{ path('app_atelier_edit', {'id': atelier.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_atelier_new') }}">Create new</a>
+    <section class="flex flex-col justify-center items-center gap-y-16">
+        <h1 class="text-4xl text-blue-900 font-bold underline">
+            Forum courant : {{ forum ? forum.nom : '' }}
+        </h1>
+        <div class="flex flex-wrap w-full gap-3 justify-center items-center">
+            {% for atelier in ateliers %}
+                <a class="w-1/4 bg-blue-400 rounded p-4 m-2 cursor-pointer" href="{{ path('app_atelier_show', {'id': atelier.id}) }}">
+                    <h3 class="text-lg font-bold">
+                        Identifiant de l'atelier : {{ atelier.id }}
+                    </h3>
+                    <p>
+                        Heure de début : {{ atelier.heureDebut ? atelier.heureDebut|date('H:i:s') : '' }}
+                    </p>
+                    <p>
+                        Heure de fin : {{ atelier.heureFin ? atelier.heureFin|date('H:i:s') : '' }}
+                    </p>
+                    <p class="font-semibold mt-2">Intervenant :</p>
+                    <ul class="list-disc ml-4">
+                        <li class="bg-black text-white py-1 px-2 rounded mt-1">{{ atelier.intervenant }}</li>
+                    </ul>
+                </a>
+            {% else %}
+                <p class="text-red-500 mt-4">Pas d'enregistrements trouvés.</p>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}
