@@ -14,33 +14,56 @@
                     <td class="px-6 py-3">{{ atelier.id }}</td>
                 </tr>
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Secteur</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Secteur
+                    </th>
                     <td class="px-6 py-3">{{ atelier.secteur.nom }}</td>
                 </tr>
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Heure de début</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Heure de
+                        début
+                    </th>
                     <td class="px-6 py-3">{{ atelier.heureDebut ? atelier.heureDebut|date('H:i:s') : '' }}</td>
                 </tr>
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Heure de fin</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Heure de
+                        fin
+                    </th>
                     <td class="px-6 py-3">{{ atelier.heureFin ? atelier.heureFin|date('H:i:s') : '' }}</td>
                 </tr>
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Salle</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Salle
+                    </th>
                     <td class="px-6 py-3">{{ atelier.salle.nom }}</td>
                 </tr>
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Capacité Max</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Capacité
+                        Max
+                    </th>
                     <td class="px-6 py-3">{{ atelier.salle.capacite }}</td>
                 </tr>
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Intervenant</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Intervenant
+                    </th>
                     <td class="px-6 py-3">{{ atelier.intervenant }}</td>
+                </tr>
+
                 </tr>
                 </tbody>
             </table>
         </div>
+        <h1 class="text-2xl font-bold mb-4  ">Liste des métiers</h1>
 
+        <div class="overflow-x-auto ">
+            {% if atelier.metiers|length > 0 %}
+                {% for metier in atelier.metiers %}
+                    <div class="p-6 border bg-white rounded-lg w-fit text-2xl">{{ metier.nom }}</div>
+                {% endfor %}
+            {% else %}
+                <div class="p-6 border bg-white rounded-lg w-fit text-2xl">Aucun métier</div>
+            {% endif %}
+
+        </div>
         <div class="mt-4">
             <a href="{{ path('app_atelier_index') }}" class="text-blue-600 hover:underline">Retour à la liste</a>
             <a href="{{ path('app_atelier_edit', {'id': atelier.id}) }}" class="ml-4 text-blue-600 hover:underline">Éditer</a>
