@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lyceen index{% endblock %}
+
+{% block body %}
+    <h1>Lyceen index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lyceen in lyceens %}
+            <tr>
+                <td>{{ lyceen.id }}</td>
+                <td>{{ lyceen.nom }}</td>
+                <td>{{ lyceen.prenom }}</td>
+                <td>{{ lyceen.email }}</td>
+                <td>{{ lyceen.tel }}</td>
+                <td>
+                    <a href="{{ path('app_lyceen_show', {'id': lyceen.id}) }}">show</a>
+                    <a href="{{ path('app_lyceen_edit', {'id': lyceen.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_lyceen_new') }}">Create new</a>
+{% endblock %}
