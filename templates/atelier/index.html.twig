@@ -5,7 +5,7 @@
 {% block body %}
     <section class="flex flex-col justify-center items-center gap-y-16">
         <h1 class="text-4xl text-blue-900 font-bold underline">
-            Forum courant : {{ forum.nom }}
+            Forum courant : {{ forum ? forum.nom : '' }}
         </h1>
         <div class="flex flex-wrap w-full gap-3 justify-center items-center">
             {% for atelier in ateliers %}
