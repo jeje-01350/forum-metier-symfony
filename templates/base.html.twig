@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+<nav class="bg-gray-200 py-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <ul class="flex space-x-6">
+            <li><a href="{{ path('app_homepage') }}" class="text-blue-500 hover:text-blue-800 text-2xl">Liste des
+                    ateliers</a></li>
+            <li><a href="" class="text-blue-500 hover:text-blue-800 text-2xl">Temporaire</a></li>
+            <li><a href="" class="text-blue-500 hover:text-blue-800 text-2xl">Temporaire</a></li>
+            <!-- rajouter les autres entrées du menu ici -->
+        </ul>
+    </div>
+</nav>
+<main class="container mx-auto">
+    {% block body %}{% endblock %}
+</main>
+</body>
 </html>
