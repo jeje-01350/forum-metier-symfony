@@ -22,8 +22,8 @@ class Atelier
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $heureFin = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private ?array $intervenants = null;
+    #[ORM\Column(length: 255, nullable: false)]
+    private ?string $intervenant = null;
 
     #[ORM\OneToOne(mappedBy: 'atelier', cascade: ['persist', 'remove'])]
     private ?Salle $salle = null;
@@ -72,14 +72,14 @@ class Atelier
         return $this;
     }
 
-    public function getIntervenants(): ?array
+    public function getIntervenant(): ?string
     {
-        return $this->intervenants;
+        return $this->intervenant;
     }
 
-    public function setIntervenants(?array $intervenants): static
+    public function setIntervenant(?string $intervenant): static
     {
-        $this->intervenants = $intervenants;
+        $this->intervenant = $intervenant;
 
         return $this;
     }
