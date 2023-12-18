@@ -51,11 +51,11 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $email = (new Email())
+            $email = (new TemplatedEmail())
                 ->from('esgi@tp-symfony.fr')
                 ->to($user->getEmail())
-                ->subject('Vous vous etes inscrit sur le site')
-                ->text('test');
+                ->subject('Nouvelle inscription')
+                ->htmlTemplate('registration/confirmation_email.html.twig');
 
             try {
                 $mailer->send($email);
