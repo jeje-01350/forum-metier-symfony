@@ -22,9 +22,6 @@ class Lyceen
     private ?string $prenom = null;
 
     #[ORM\Column(length: 255, unique: true)]
-    private ?string $email = null;
-
-    #[ORM\Column(length: 255, unique: true)]
     private ?string $tel = null;
 
     #[ORM\ManyToOne(inversedBy: 'lyceens')]
@@ -72,18 +69,6 @@ class Lyceen
     public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): static
-    {
-        $this->email = $email;
 
         return $this;
     }

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Lyceen;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Form\LyceenType;
 use App\Security\EmailVerifier;
 use App\Security\LoginAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,9 +33,18 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
+    public function register(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        UserAuthenticatorInterface $userAuthenticator,
+        LoginAuthenticator $authenticator,
+        EntityManagerInterface $entityManager,
+        MailerInterface $mailer
+    ): Response
     {
         $user = new User();
+        $lyceen = new Lyceen();
+
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
@@ -50,6 +61,15 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $lyceenFormData = $form->get('lyceen')->getData();
+
+            $lyceen->setNom($lyceenFormData->getNom());
+            $lyceen->setPrenom($lyceenFormData->getPrenom());
+            $lyceen->setTel($lyceenFormData->getTel());
+            $lyceen->setLycee($lyceenFormData->getLycee());
+            $lyceen->setNiveau($lyceenFormData->getNiveau());
+            $lyceen->setUser($user);
 
             $email = (new TemplatedEmail())
                 ->from('esgi@tp-symfony.fr')
