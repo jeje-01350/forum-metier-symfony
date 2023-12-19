@@ -43,7 +43,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('lyceen', LyceenType::class);
+            ->add('lyceen', LyceenRegistrationType::class);
         ;
     }
 
