@@ -16,7 +16,6 @@ class QuestionnaireController extends AbstractController
     #[Route('/questionnaire', name: 'app_questionnaire')]
     public function fillQuestionnaire(Request $request): Response
     {
-        // Questions statiques
         $questions = [
             ['text' => 'Quel est votre avis sur la qualité des ateliers ?', 'type' => 'ouvert'],
             ['text' => 'Avez-vous trouvé les informations utiles ?', 'type' => 'ferme'],
@@ -25,7 +24,6 @@ class QuestionnaireController extends AbstractController
             ['text' => 'Quelles suggestions avez-vous pour améliorer le forum ?', 'type' => 'ouvert'],
         ];
 
-        // Créer le formulaire en ajoutant dynamiquement les champs pour chaque question
         $formBuilder = $this->createFormBuilder();
 
         foreach ($questions as $index => $question) {
@@ -52,10 +50,9 @@ class QuestionnaireController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Logique de traitement du formulaire
-            // ...
 
-            return $this->redirectToRoute('app_home'); // Remplacez 'app_home' par la route souhaitée
+
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render('questionnaire/fill_questionnaire.html.twig', [
