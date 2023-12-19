@@ -3,35 +3,37 @@
 {% block title %}Salle index{% endblock %}
 
 {% block body %}
-    <h1>Salle index</h1>
+    <div class="max-w-3xl mx-auto mt-8">
+        <h1 class="text-3xl font-bold mb-4">Salle Index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Capacite</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for salle in salles %}
-            <tr>
-                <td>{{ salle.id }}</td>
-                <td>{{ salle.nom }}</td>
-                <td>{{ salle.capacite }}</td>
-                <td>
-                    <a href="{{ path('app_salle_show', {'id': salle.id}) }}">show</a>
-                    <a href="{{ path('app_salle_edit', {'id': salle.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table-auto w-full">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Id</th>
+                    <th class="px-4 py-2">Nom</th>
+                    <th class="px-4 py-2">Capacité</th>
+                    <th class="px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for salle in salles %}
+                    <tr>
+                        <td class="border px-4 py-2">{{ salle.id }}</td>
+                        <td class="border px-4 py-2">{{ salle.nom }}</td>
+                        <td class="border px-4 py-2">{{ salle.capacite }}</td>
+                        <td class="border px-4 py-2">
+                            <a href="{{ path('app_salle_show', {'id': salle.id}) }}" class="text-blue-500 hover:underline mr-2">Show</a>
+                            <a href="{{ path('app_salle_edit', {'id': salle.id}) }}" class="text-blue-500 hover:underline">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td class="border px-4 py-2" colspan="4">No records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_salle_new') }}">Create new</a>
+        <a href="{{ path('app_salle_new') }}" class="block mt-4 text-blue-500 hover:underline">Create new</a>
+    </div>
 {% endblock %}

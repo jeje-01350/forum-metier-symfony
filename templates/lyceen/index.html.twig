@@ -3,39 +3,41 @@
 {% block title %}Lyceen index{% endblock %}
 
 {% block body %}
-    <h1>Lyceen index</h1>
+    <div class="max-w-4xl mx-auto mt-8 bg-white p-8 rounded shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Lyceen index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Tel</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for lyceen in lyceens %}
-            <tr>
-                <td>{{ lyceen.id }}</td>
-                <td>{{ lyceen.nom }}</td>
-                <td>{{ lyceen.prenom }}</td>
-                <td>{{ lyceen.user.email }}</td>
-                <td>{{ lyceen.tel }}</td>
-                <td>
-                    <a href="{{ path('app_lyceen_show', {'id': lyceen.id}) }}">show</a>
-                    <a href="{{ path('app_lyceen_edit', {'id': lyceen.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="w-full table-auto">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Id</th>
+                    <th class="px-4 py-2">Nom</th>
+                    <th class="px-4 py-2">Prenom</th>
+                    <th class="px-4 py-2">Email</th>
+                    <th class="px-4 py-2">Tel</th>
+                    <th class="px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lyceen in lyceens %}
+                    <tr>
+                        <td class="border px-4 py-2">{{ lyceen.id }}</td>
+                        <td class="border px-4 py-2">{{ lyceen.nom }}</td>
+                        <td class="border px-4 py-2">{{ lyceen.prenom }}</td>
+                        <td class="border px-4 py-2">{{ lyceen.user.email }}</td>
+                        <td class="border px-4 py-2">{{ lyceen.tel }}</td>
+                        <td class="border px-4 py-2">
+                            <a href="{{ path('app_lyceen_show', {'id': lyceen.id}) }}" class="text-blue-500 hover:underline">Show</a>
+                            <a href="{{ path('app_lyceen_edit', {'id': lyceen.id}) }}" class="text-blue-500 hover:underline">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="border px-4 py-2">No records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_lyceen_new') }}">Create new</a>
+        <a href="{{ path('app_lyceen_new') }}" class="block mt-4 text-blue-500 hover:underline">Create new</a>
+    </div>
 {% endblock %}

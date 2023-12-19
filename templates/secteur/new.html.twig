@@ -3,9 +3,11 @@
 {% block title %}New Secteur{% endblock %}
 
 {% block body %}
-    <h1>Create new Secteur</h1>
+    <div class="my-form-container">
+        <h1 class="my-form-title text-2xl font-bold mb-4">Create new Secteur</h1>
 
-    {{ include('secteur/_form.html.twig') }}
+        {{ include('secteur/_form.html.twig') }}
 
-    <a href="{{ path('app_secteur_index') }}">back to list</a>
+        <a href="{{ path('app_secteur_index') }}" class="btn btn-secondary mt-3">Back to List</a>
+    </div>
 {% endblock %}

@@ -1,26 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Lycee{% endblock %}
+{% block title %}Lycée{% endblock %}
 
 {% block body %}
-    <h1>Lycee</h1>
+    <div class="max-w-md mx-auto mt-8">
+        <h1 class="text-2xl font-bold mb-4">Lycée</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ lycee.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ lycee.nom }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ lycee.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ lycee.nom }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_lycee_index') }}">back to list</a>
+        <a href="{{ path('app_lycee_index') }}" class="block mt-4 text-blue-500 hover:underline">Back to List</a>
+        
+        <a href="{{ path('app_lycee_edit', {'id': lycee.id}) }}" class="block mt-4 text-blue-500 hover:underline">Edit</a>
 
-    <a href="{{ path('app_lycee_edit', {'id': lycee.id}) }}">edit</a>
-
-    {{ include('lycee/_delete_form.html.twig') }}
+        {{ include('lycee/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

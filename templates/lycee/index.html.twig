@@ -1,35 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Lycee index{% endblock %}
+{% block title %}Lycée Index{% endblock %}
 
 {% block body %}
-    <h1>Lycee index</h1>
+    <div class="max-w-2xl mx-auto mt-8">
+        <h1 class="text-2xl font-bold mb-4">Lycée Index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for lycee in lycees %}
-            <tr>
-                <td>{{ lycee.id }}</td>
-                <td>{{ lycee.nom }}</td>
-                <td>
-                    <a href="{{ path('app_lycee_show', {'id': lycee.id}) }}">show</a>
-                    <a href="{{ path('app_lycee_edit', {'id': lycee.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="min-w-full bg-white border border-gray-300">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">Id</th>
+                    <th class="py-2 px-4 border-b">Nom</th>
+                    <th class="py-2 px-4 border-b">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lycee in lycees %}
+                    <tr>
+                        <td class="py-2 px-4 border-b">{{ lycee.id }}</td>
+                        <td class="py-2 px-4 border-b">{{ lycee.nom }}</td>
+                        <td class="py-2 px-4 border-b">
+                            <a href="{{ path('app_lycee_show', {'id': lycee.id}) }}" class="text-blue-500 hover:underline mr-2">Show</a>
+                            <a href="{{ path('app_lycee_edit', {'id': lycee.id}) }}" class="text-blue-500 hover:underline">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3" class="py-2 px-4 border-b">No records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_lycee_new') }}">Create new</a>
+        <a href="{{ path('app_lycee_new') }}" class="block mt-4 text-blue-500 hover:underline">Create new</a>
+    </div>
 {% endblock %}

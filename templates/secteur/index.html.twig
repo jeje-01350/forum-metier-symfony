@@ -3,35 +3,37 @@
 {% block title %}Secteur index{% endblock %}
 
 {% block body %}
-    <h1>Secteur index</h1>
+    <div class="my-8">
+        <h1 class="text-2xl font-bold mb-4">Secteur index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for secteur in secteurs %}
-            <tr>
-                <td>{{ secteur.id }}</td>
-                <td>{{ secteur.nom }}</td>
-                <td>{{ secteur.description }}</td>
-                <td>
-                    <a href="{{ path('app_secteur_show', {'id': secteur.id}) }}">show</a>
-                    <a href="{{ path('app_secteur_edit', {'id': secteur.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-gray-200 text-gray-700">
+                <tr>
+                    <th class="py-2 px-4 border-b">Id</th>
+                    <th class="py-2 px-4 border-b">Nom</th>
+                    <th class="py-2 px-4 border-b">Description</th>
+                    <th class="py-2 px-4 border-b">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600">
+                {% for secteur in secteurs %}
+                    <tr>
+                        <td class="py-2 px-4 border-b">{{ secteur.id }}</td>
+                        <td class="py-2 px-4 border-b">{{ secteur.nom }}</td>
+                        <td class="py-2 px-4 border-b">{{ secteur.description }}</td>
+                        <td class="py-2 px-4 border-b">
+                            <a href="{{ path('app_secteur_show', {'id': secteur.id}) }}" class="text-blue-500 hover:underline mr-2">Show</a>
+                            <a href="{{ path('app_secteur_edit', {'id': secteur.id}) }}" class="text-green-500 hover:underline">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td class="py-2 px-4 border-b" colspan="4">No records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_secteur_new') }}">Create new</a>
+        <a href="{{ path('app_secteur_new') }}" class="mt-4 bg-green-500 text-white py-2 px-4 rounded inline-block">Create new</a>
+    </div>
 {% endblock %}

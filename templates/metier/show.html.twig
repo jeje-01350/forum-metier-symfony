@@ -3,24 +3,25 @@
 {% block title %}Metier{% endblock %}
 
 {% block body %}
-    <h1>Metier</h1>
+    <div class="max-w-md mx-auto mt-8">
+        <h1 class="text-3xl font-bold mb-4">Metier Details</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ metier.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ metier.nom }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ metier.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ metier.nom }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_metier_index') }}">back to list</a>
+        <a href="{{ path('app_metier_index') }}" class="block mt-4 text-blue-500 hover:underline">Back to List</a>
+        <a href="{{ path('app_metier_edit', {'id': metier.id}) }}" class="block mt-2 text-blue-500 hover:underline">Edit</a>
 
-    <a href="{{ path('app_metier_edit', {'id': metier.id}) }}">edit</a>
-
-    {{ include('metier/_delete_form.html.twig') }}
+        {{ include('metier/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

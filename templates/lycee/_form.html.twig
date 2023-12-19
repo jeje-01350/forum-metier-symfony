@@ -1,4 +1,8 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'mb-4'}}) }}
+    <div class="flex items-center justify-between mb-4">
+        {{ form_widget(form, {'attr': {'class': 'w-full bg-white rounded p-4 border'}}) }}
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+            {{ button_label|default('Save') }}
+        </button>
+    </div>
 {{ form_end(form) }}

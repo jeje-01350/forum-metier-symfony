@@ -3,9 +3,11 @@
 {% block title %}New Salle{% endblock %}
 
 {% block body %}
-    <h1>Create new Salle</h1>
+    <div class="max-w-md mx-auto mt-8">
+        <h1 class="text-3xl font-bold mb-4">Create New Salle</h1>
 
-    {{ include('salle/_form.html.twig') }}
+        {{ include('salle/_form.html.twig') }}
 
-    <a href="{{ path('app_salle_index') }}">back to list</a>
+        <a href="{{ path('app_salle_index') }}" class="block mt-4 text-blue-500 hover:underline">Back to List</a>
+    </div>
 {% endblock %}
