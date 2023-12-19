@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LyceenType extends AbstractType
+class LyceenRegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -16,10 +16,7 @@ class LyceenType extends AbstractType
             ->add('prenom')
             ->add('tel')
             ->add('lycee')
-            ->add('niveau')
-            ->add('inscription')
-            ->add('user')
-        ;
+            ->add('niveau');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -7,7 +7,7 @@
         <h1 class="text-4xl text-blue-900 font-bold underline mb-6">
             Forum courant : {{ forum ? forum.nom : '' }}
         </h1>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-4 gap-6">
             {% for atelier in ateliers %}
                 <a class="border border-gray-300 rounded-lg p-4 flex flex-col justify-between bg-white transition duration-300 hover:shadow-lg"
                    href="{{ path('app_atelier_show', {'id': atelier.id}) }}">

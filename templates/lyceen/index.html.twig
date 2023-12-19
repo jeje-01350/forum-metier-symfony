@@ -22,7 +22,7 @@
                 <td>{{ lyceen.id }}</td>
                 <td>{{ lyceen.nom }}</td>
                 <td>{{ lyceen.prenom }}</td>
-                <td>{{ lyceen.email }}</td>
+                <td>{{ lyceen.user.email }}</td>
                 <td>{{ lyceen.tel }}</td>
                 <td>
                     <a href="{{ path('app_lyceen_show', {'id': lyceen.id}) }}">show</a>

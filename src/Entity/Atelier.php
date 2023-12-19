@@ -25,9 +25,6 @@ class Atelier
     #[ORM\Column(length: 255, nullable: false)]
     private ?string $intervenant = null;
 
-    #[ORM\OneToOne(mappedBy: 'atelier', cascade: ['persist', 'remove'])]
-    private ?Salle $salle = null;
-
     #[ORM\OneToMany(mappedBy: 'atelier', targetEntity: Metier::class)]
     private Collection $metiers;
 
@@ -37,6 +34,9 @@ class Atelier
     #[ORM\ManyToOne(inversedBy: 'ateliers')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Secteur $secteur = null;
+
+    #[ORM\ManyToOne(inversedBy: 'ateliers')]
+    private ?Salle $salle = null;
 
     public function __construct()
     {
@@ -80,28 +80,6 @@ class Atelier
     public function setIntervenant(?string $intervenant): static
     {
         $this->intervenant = $intervenant;
-
-        return $this;
-    }
-
-    public function getSalle(): ?Salle
-    {
-        return $this->salle;
-    }
-
-    public function setSalle(?Salle $salle): static
-    {
-        // unset the owning side of the relation if necessary
-        if ($salle === null && $this->salle !== null) {
-            $this->salle->setAtelier(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($salle !== null && $salle->getAtelier() !== $this) {
-            $salle->setAtelier($this);
-        }
-
-        $this->salle = $salle;
 
         return $this;
     }
@@ -156,6 +134,18 @@ class Atelier
     public function setSecteur(?Secteur $secteur): static
     {
         $this->secteur = $secteur;
+
+        return $this;
+    }
+
+    public function getSalle(): ?Salle
+    {
+        return $this->salle;
+    }
+
+    public function setSalle(?Salle $salle): static
+    {
+        $this->salle = $salle;
 
         return $this;
     }

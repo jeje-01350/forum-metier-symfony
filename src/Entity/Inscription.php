@@ -29,6 +29,7 @@ class Inscription
     public function __construct()
     {
         $this->ateliers = new ArrayCollection();
+        $this->dateInscription = new \DateTime();
     }
 
 

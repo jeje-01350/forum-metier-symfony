@@ -26,9 +26,11 @@
         <div class="flex space-x-4 items-center">
             {% if app.user %}
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a class="text-white px-2 py-1 rounded-2xl bg-red-500  text-lg">Admin</a>
+                    <a href="{{ path('app_dashboard', {'id': app.user.id}) }}"
+                       class="text-white px-2 py-1 rounded-2xl bg-red-500 text-lg hover:bg-lime-300 hover:text-red-950 cursor-pointer">Admin</a>
                 {% else %}
-                    <a href="{{ path('app_lyceen_show') }}" class=" px-2 py-1 rounded-2xl bg-blue-200 text-blue-700 text-lg hover:bg-blue-700 hover:text-blue-200 cursor-pointer">{{ app.user.email }}</a>
+                    <a href="{{ path('app_lyceen_show') }}"
+                       class=" px-2 py-1 rounded-2xl bg-blue-200 text-blue-700 text-lg hover:bg-blue-700 hover:text-blue-200 cursor-pointer">{{ app.user.email }}</a>
                 {% endif %}
                 <a href="{{ path('app_logout') }}" class="text-blue-500 hover:text-blue-800 text-2xl">Déconnexion</a>
             {% else %}
