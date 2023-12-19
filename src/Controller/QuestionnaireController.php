@@ -52,7 +52,7 @@ class QuestionnaireController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_homepage');
         }
 
         return $this->render('questionnaire/fill_questionnaire.html.twig', [

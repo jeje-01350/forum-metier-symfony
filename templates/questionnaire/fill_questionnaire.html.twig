@@ -2,14 +2,26 @@
 
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+{% endblock %}
+
 {% block body %}
-    <h1>Questionnaire</h1>
+    <div class="max-w-md mx-auto mt-8 bg-white p-8 rounded shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Questionnaire</h1>
 
-    {{ form_start(form) }}
+        {{ form_start(form, {'attr': {'class': 'mb-4'}}) }}
 
-    {{ form_widget(form) }}
+        {% for question in form %}
+            {{ form_row(question, {'attr': {'class': 'w-full bg-gray-100 rounded p-3 mb-3'}})
+             }}
+        {% endfor %}
 
-    <button type="submit">Submit</button>
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+            Envoyer
+        </button>
 
-    {{ form_end(form) }}
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

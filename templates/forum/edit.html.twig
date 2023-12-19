@@ -3,11 +3,13 @@
 {% block title %}Edit Forum{% endblock %}
 
 {% block body %}
-    <h1>Edit Forum</h1>
+    <div class="max-w-md mx-auto mt-8 bg-white p-8 rounded shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Edit Forum</h1>
 
-    {{ include('forum/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('forum/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_forum_index') }}">back to list</a>
+        <a href="{{ path('app_forum_index') }}" class="block mt-4 text-blue-500 hover:underline">Back to List</a>
 
-    {{ include('forum/_delete_form.html.twig') }}
+        {{ include('forum/_delete_form.html.twig') }}
+    </div>
 {% endblock %}
