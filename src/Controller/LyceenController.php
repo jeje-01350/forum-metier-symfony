@@ -42,11 +42,18 @@ class LyceenController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_lyceen_show', methods: ['GET'])]
-    public function show(Lyceen $lyceen): Response
+    #[Route('/show', name: 'app_lyceen_show', methods: ['GET'])]
+    public function show(LyceenRepository $lyceenRepository): Response
     {
         return $this->render('lyceen/show.html.twig', [
-            'lyceen' => $lyceen,
+            'lyceen' => $lyceenRepository->findByUser($this->getUser()),
+        ]);
+    }
+    #[Route('/show_id_user', name: 'app_lyceen_show_id_user', methods: ['GET'])]
+    public function showIdUser(LyceenRepository $lyceenRepository): Response
+    {
+        return $this->render('lyceen/show.html.twig', [
+            'lyceen' => $lyceenRepository->findByIdUser(2),
         ]);
     }
 

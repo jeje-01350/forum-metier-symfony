@@ -19,12 +19,12 @@
 
             <div class="mb-4">
                 <label for="inputEmail" class="block text-sm font-medium text-gray-600">Email</label>
-                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-input mt-1 block w-full" autocomplete="email" required autofocus>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-input mt-1 block w-full border" autocomplete="email" required autofocus>
             </div>
 
             <div class="mb-4">
                 <label for="inputPassword" class="block text-sm font-medium text-gray-600">Password</label>
-                <input type="password" name="password" id="inputPassword" class="form-input mt-1 block w-full" autocomplete="current-password" required>
+                <input type="password" name="password" id="inputPassword" class="form-input mt-1 block w-full border" autocomplete="current-password" required>
             </div>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
