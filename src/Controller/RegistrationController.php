@@ -43,7 +43,6 @@ class RegistrationController extends AbstractController
     ): Response
     {
         $user = new User();
-        $lyceen = new Lyceen();
 
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -61,15 +60,6 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-
-            $lyceenFormData = $form->get('lyceen')->getData();
-
-            $lyceen->setNom($lyceenFormData->getNom());
-            $lyceen->setPrenom($lyceenFormData->getPrenom());
-            $lyceen->setTel($lyceenFormData->getTel());
-            $lyceen->setLycee($lyceenFormData->getLycee());
-            $lyceen->setNiveau($lyceenFormData->getNiveau());
-            $lyceen->setUser($user);
 
             $email = (new TemplatedEmail())
                 ->from('esgi@tp-symfony.fr')

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\LyceenRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LyceenRepository::class)]
@@ -39,9 +40,13 @@ class Lyceen
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $date_inscription = null;
+
 
     public function __construct()
     {
+        $this->date_inscription = new \DateTime();
     }
 
     public function getId(): ?int
@@ -134,6 +139,18 @@ class Lyceen
     public function setUser(User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDateInscription(): ?\DateTimeInterface
+    {
+        return $this->date_inscription;
+    }
+
+    public function setDateInscription(\DateTimeInterface $date_inscription): static
+    {
+        $this->date_inscription = $date_inscription;
 
         return $this;
     }
