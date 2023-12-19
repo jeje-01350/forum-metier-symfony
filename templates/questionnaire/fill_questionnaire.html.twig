@@ -1,0 +1,15 @@
+{# templates/questionnaire/fill_questionnaire.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Questionnaire</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+
+    <button type="submit">Submit</button>
+
+    {{ form_end(form) }}
+{% endblock %}

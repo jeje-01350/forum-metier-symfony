@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Lyceen;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -45,4 +46,13 @@ class LyceenRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function findByUser(User $getUserIdentifier)
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.user = :val')
+            ->setParameter('val', $getUserIdentifier)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }
