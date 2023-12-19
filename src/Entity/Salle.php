@@ -3,11 +3,19 @@
 namespace App\Entity;
 
 use App\Repository\SalleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SalleRepository::class)]
 class Salle
 {
+
+    public function __toString(): string
+    {
+        return $this->nom;
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -19,10 +27,13 @@ class Salle
     #[ORM\Column]
     private ?int $capacite = null;
 
-    #[ORM\OneToOne(inversedBy: 'salle', cascade: ['persist', 'remove'])]
-    private ?Atelier $atelier = null;
+    #[ORM\OneToMany(mappedBy: 'salle', targetEntity: atelier::class)]
+    private Collection $ateliers;
 
-
+    public function __construct()
+    {
+        $this->ateliers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -53,14 +64,31 @@ class Salle
         return $this;
     }
 
-    public function getAtelier(): ?Atelier
+    /**
+     * @return Collection<int, atelier>
+     */
+    public function getAteliers(): Collection
     {
-        return $this->atelier;
+        return $this->ateliers;
     }
 
-    public function setAtelier(?Atelier $atelier): static
+    public function addAtelier(atelier $atelier): static
     {
-        $this->atelier = $atelier;
+        if (!$this->ateliers->contains($atelier)) {
+            $this->ateliers->add($atelier);
+            $atelier->setSalle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAtelier(atelier $atelier): static
+    {
+        if ($this->ateliers->removeElement($atelier)) {
+            if ($atelier->getSalle() === $this) {
+                $atelier->setSalle(null);
+            }
+        }
 
         return $this;
     }

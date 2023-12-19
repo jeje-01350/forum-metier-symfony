@@ -21,17 +21,17 @@ class AtelierType extends AbstractType
         $builder
             ->add('heureDebut', null, [
                 'attr' => [
-                    'class' => 'border rounded py-2 px-3 w-full mb-2', // Style pour le champ "heureDebut"
+                    'class' => 'border rounded py-2 px-3 w-full mb-2',
                 ],
             ])
             ->add('heureFin', null, [
                 'attr' => [
-                    'class' => 'border rounded py-2 px-3 w-full mb-2', // Style pour le champ "heureFin"
+                    'class' => 'border rounded py-2 px-3 w-full mb-2',
                 ],
             ])
             ->add('intervenant', null, [
                 'attr' => [
-                    'class' => 'border rounded py-2 px-3 w-full mb-2', // Style pour le champ "salle"
+                    'class' => 'border rounded py-2 px-3 w-full mb-2',
                 ],
             ])
             ->add('salle', EntityType::class, [
@@ -39,18 +39,18 @@ class AtelierType extends AbstractType
                 'choice_label' => 'nom',
                 'multiple' => false,
                 'expanded' => false,
-                'by_reference' => false,
+                'by_reference' => true,
                 'attr' => [
-                    'class' => 'border rounded py-2 px-3 w-full mb-2', // Style pour le champ "salle"
+                    'class' => 'border rounded py-2 px-3 w-full mb-2',
                 ],
             ])
             ->add('secteur', null, [
                 'choice_label' => 'nom',
                 'multiple' => false,
                 'expanded' => false,
-                'by_reference' => false,
+                'by_reference' => true,
                 'attr' => [
-                    'class' => 'border rounded py-2 px-3 w-full mb-4', // Style pour le champ "secteur"
+                    'class' => 'border rounded py-2 px-3 w-full mb-4',
                 ],
             ]);
     }
