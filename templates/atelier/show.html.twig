@@ -33,13 +33,13 @@
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Salle
                     </th>
-                    <td class="px-6 py-3">{{ atelier.salle.nom }}</td>
+                    <td class="px-6 py-3">{{ atelier.salle ? atelier.salle.nom : 'inconnue' }}</td>
                 </tr>
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Capacité
                         Max
                     </th>
-                    <td class="px-6 py-3">{{ atelier.salle.capacite }}</td>
+                    <td class="px-6 py-3">{{atelier.salle ? atelier.salle.capacite : 'inconnue'}}</td>
                 </tr>
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">

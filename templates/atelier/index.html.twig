@@ -25,10 +25,10 @@
                             Heure de fin : {{ atelier.heureFin ? atelier.heureFin|date('H:i') : '' }}
                         </p>
                         <p>
-                            Salle : {{ atelier.salle.nom }}
+                            Salle : {{ atelier.salle ? atelier.salle.nom : 'inconnue' }}
                         </p>
                         <p>
-                            Capacité Max : {{ atelier.salle.capacite }}
+                            Capacité Max : {{atelier.salle ? atelier.salle.capacite : 'inconnue'}}
                         </p>
                     </div>
                     <div class="mt-4">
