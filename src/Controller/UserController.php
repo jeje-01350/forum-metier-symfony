@@ -50,6 +50,14 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/dashboard', name: 'app_dashboard', methods: ['GET'])]
+    public function dashboard(User $user): Response
+    {
+        return $this->render('user/dashboard.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <section class="flex flex-col items-center justify-center h-full">
+        <h1 class="text-4xl font-bold text-center ">Dashboard admin</h1>
+
+        <div class="flex flex-wrap justify-center items-center gap-12 w-4/5 py-16 h-full">
+            <a href="{{ path('app_atelier_index') }}"
+               class="bg-blue-500 hover:bg-blue-700 text-white text-4xl font-bold py-2 px-4 w-1/4 h-52 rounded flex items-center justify-center">Atelier</a>
+            <a href="{{ path('app_lycee_index') }}"
+               class="bg-blue-500 hover:bg-blue-700 text-white text-4xl font-bold py-2 px-4 w-1/4 h-52 rounded flex items-center justify-center">Lycee</a>
+            <a href="{{ path('app_lyceen_index') }}"
+               class="bg-blue-500 hover:bg-blue-700 text-white text-4xl font-bold py-2 px-4 w-1/4 h-52 rounded flex items-center justify-center">Lycéen</a>
+            <a href="{{ path('app_salle_index') }}"
+               class="bg-blue-500 hover:bg-blue-700 text-white text-4xl font-bold py-2 px-4 w-1/4 h-52 rounded flex items-center justify-center">Salle</a>
+            <a href="{{ path('app_secteur_index') }}"
+               class="bg-blue-500 hover:bg-blue-700 text-white text-4xl font-bold py-2 px-4 w-1/4 h-52 rounded flex items-center justify-center">Secteur</a>
+            <a href="{{ path('app_forum_index') }}"
+               class="bg-blue-500 hover:bg-blue-700 text-white text-4xl font-bold py-2 px-4 w-1/4 h-52 rounded flex items-center justify-center">Forum</a>
+        </div>
+    </section>
+
+
+
+{% endblock %}
