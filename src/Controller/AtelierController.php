@@ -63,6 +63,13 @@ class AtelierController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Handle the associated Salle
+            $salle = $atelier->getSalle();
+            if ($salle !== null) {
+                $entityManager->persist($salle);
+            }
+
+            $entityManager->persist($atelier);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_atelier_index', [], Response::HTTP_SEE_OTHER);
@@ -70,7 +77,7 @@ class AtelierController extends AbstractController
 
         return $this->render('atelier/edit.html.twig', [
             'atelier' => $atelier,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
