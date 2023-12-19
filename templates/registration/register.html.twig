@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <div class="container mx-auto mt-8">
+        <div class="max-w-md mx-auto bg-white p-8 border rounded-md shadow-md">
+            <h1 class="text-2xl font-semibold mb-6">Register</h1>
+
+            {{ form_errors(registrationForm) }}
+
+            {{ form_start(registrationForm) }}
+
+            {# Champs utilisateur #}
+            <div class="mb-4">
+                {{ form_row(registrationForm.email, {'attr': {'class': 'form-input border'}}) }}
+            </div>
+            <div class="mb-4">
+                {{ form_row(registrationForm.plainPassword, {
+                    'label': 'Password',
+                    'attr': {'class': 'form-input border'}
+                }) }}
+            </div>
+            <div class="mb-6">
+                {{ form_row(registrationForm.agreeTerms, {'label_attr': {'class': 'flex items-center'}}) }}
+                <label for="{{ registrationForm.agreeTerms.vars.id }}" class="ml-2 text-sm">I agree to the terms</label>
+            </div>
+
+            {# Champs lyceen #}
+            <div class="mb-4">
+                {{ form_row(registrationForm.lyceen.nom, {'attr': {'class': 'form-input border'}}) }}
+            </div>
+            <div class="mb-4">
+                {{ form_row(registrationForm.lyceen.prenom, {'attr': {'class': 'form-input border'}}) }}
+            </div>
+            <div class="mb-4">
+                {{ form_row(registrationForm.lyceen.tel, {'attr': {'class': 'form-input border'}}) }}
+            </div>
+            <div class="mb-4">
+                {{ form_row(registrationForm.lyceen.lycee, {'attr': {'class': 'form-input border'}}) }}
+            </div>
+            <div class="mb-4">
+                {{ form_row(registrationForm.lyceen.niveau, {'attr': {'class': 'form-input border'}}) }}
+            </div>
+
+            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                Register
+            </button>
+
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}

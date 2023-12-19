@@ -3,3 +3,8 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+# Path: config/routes.yaml
+app_homepage:
+    path: /
+    controller: App\Controller\AtelierController::index
