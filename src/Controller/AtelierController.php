@@ -9,6 +9,7 @@ use App\Repository\ForumRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -90,5 +91,29 @@ class AtelierController extends AbstractController
         }
 
         return $this->redirectToRoute('app_atelier_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/api/inscrits-par-ateliers-creneaux', name: 'api_inscrits_par_ateliers_creneaux')]
+    public function inscritsParAteliersCreneaux( AtelierRepository $atelierRepository): JsonResponse
+    {
+        $ateliers = $atelierRepository->findAll();
+
+        $result = [];
+
+        foreach ($ateliers as $atelier) {
+            $atelierData = [
+                'id' => $atelier->getId(),
+                'heureDebut' => $atelier->getHeureDebut()->format('H:i'),
+                'heureFin' => $atelier->getHeureFin()->format('H:i'),
+                'intervenant' => $atelier->getIntervenant(),
+                'secteur' => $atelier->getSecteur() !== null ? $atelier->getSecteur()->getNom() : null,
+                'salle' => $atelier->getSalle() !== null ? $atelier->getSalle()->getNom() : null,
+                'nombreInscrits' => "work in progress"
+            ];
+
+            $result[] = $atelierData;
+        }
+
+        return $result !== [] ? new JsonResponse($result) : new JsonResponse(['error' => 'No data'], Response::HTTP_NOT_FOUND);
     }
 }

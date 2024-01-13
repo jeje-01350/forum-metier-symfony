@@ -12,3 +12,7 @@ app_homepage:
 app_questionnaire:
     path: /questionnaire
     controller: App\Controller\QuestionnaireController::fillQuestionnaire
+
+api_inscrits_par_ateliers_creneaux:
+    path: /api/inscrits-par-ateliers-creneaux
+    controller: App\Controller\AtelierController::inscritsParAteliersCreneaux
