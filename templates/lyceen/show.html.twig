@@ -35,9 +35,10 @@
             </tr>
             </tbody>
         </table>
+        {% if is_granted('ROLE_ADMIN') %}
 
-
-    <a href="{{ path('app_lyceen_index') }}">back to list</a>
+        <a href="{{ path('app_lyceen_index') }}">back to list</a>
+        {% endif %}
 
     <a href="{{ path('app_lyceen_edit', {'id': lyceen.id}) }}">edit</a>
 

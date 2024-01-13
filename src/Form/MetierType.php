@@ -13,8 +13,15 @@ class MetierType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('atelier')
-        ;
+            ->add('atelier', null, [
+                'choice_label' => 'id',
+                'multiple' => false,
+                'expanded' => false,
+                'by_reference' => true,
+                'attr' => [
+                    'class' => 'border rounded py-2 px-3 w-full mb-4',
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -7,7 +7,9 @@
         <h1 class="text-2xl font-bold mb-4">Edit Lyceen</h1>
 
         {{ include('lyceen/_form.html.twig', {'button_label': 'Update'}) }}
+        {% if is_granted('ROLE_ADMIN') %}
 
         <a href="{{ path('app_lyceen_index') }}" class="block mt-4 text-blue-500 hover:underline">Back to List</a>
+        {% endif %}
     </div>
 {% endblock %}

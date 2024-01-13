@@ -17,8 +17,6 @@ class LyceenType extends AbstractType
             ->add('tel')
             ->add('lycee')
             ->add('niveau')
-            ->add('inscription')
-            ->add('user')
         ;
     }
 

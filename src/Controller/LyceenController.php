@@ -83,6 +83,6 @@ class LyceenController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_lyceen_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_atelier_index', [], Response::HTTP_SEE_OTHER);
     }
 }

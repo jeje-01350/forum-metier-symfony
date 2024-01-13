@@ -27,7 +27,7 @@ class Salle
     #[ORM\Column]
     private ?int $capacite = null;
 
-    #[ORM\OneToMany(mappedBy: 'salle', targetEntity: atelier::class)]
+    #[ORM\OneToMany(mappedBy: 'salle', targetEntity: Atelier::class)]
     private Collection $ateliers;
 
     public function __construct()

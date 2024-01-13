@@ -4,9 +4,14 @@
 
 {% block body %}
     <section class="flex flex-col justify-center items-center gap-y-8 ">
-        <h1 class="text-4xl text-blue-900 font-bold underline mb-6">
+        <h1 class="text-4xl text-blue-900 font-bold underline ">
             Forum courant : {{ forum ? forum.nom : '' }}
         </h1>
+        {% if is_granted('ROLE_ADMIN') %}
+
+            <a href="{{ path('app_lycee_new') }}" class="block  text-blue-500 hover:underline">Create new</a>
+
+        {% endif %}
         <div class="grid grid-cols-4 gap-6">
             {% for atelier in ateliers %}
                 <a class="border border-gray-300 rounded-lg p-4 flex flex-col justify-between bg-white transition duration-300 hover:shadow-lg"
@@ -28,7 +33,7 @@
                             Salle : {{ atelier.salle ? atelier.salle.nom : 'inconnue' }}
                         </p>
                         <p>
-                            Capacité Max : {{atelier.salle ? atelier.salle.capacite : 'inconnue'}}
+                            Capacité Max : {{ atelier.salle ? atelier.salle.capacite : 'inconnue' }}
                         </p>
                     </div>
                     <div class="mt-4">
