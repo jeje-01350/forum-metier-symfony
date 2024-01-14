@@ -50,7 +50,9 @@ class QuestionnaireController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
 
+            $answers = $form->getData();
 
             return $this->redirectToRoute('app_homepage');
         }

@@ -3,11 +3,15 @@
 {% block title %}New Secteur{% endblock %}
 
 {% block body %}
-    <div class="my-form-container">
-        <h1 class="my-form-title text-2xl font-bold mb-4">Create new Secteur</h1>
+    <div class="my-8">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Create New Secteur</h1>
 
-        {{ include('secteur/_form.html.twig') }}
+        <div class="bg-white p-6 rounded-md shadow-md">
+            {{ include('secteur/_form.html.twig') }}
 
-        <a href="{{ path('app_secteur_index') }}" class="btn btn-secondary mt-3">Back to List</a>
+            <a href="{{ path('app_secteur_index') }}" class="inline-block mt-4 px-6 py-2 text-white bg-gray-500 rounded hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray active:bg-gray-800">
+                Back to List
+            </a>
+        </div>
     </div>
 {% endblock %}

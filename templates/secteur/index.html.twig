@@ -4,36 +4,40 @@
 
 {% block body %}
     <div class="my-8">
-        <h1 class="text-2xl font-bold mb-4">Secteur index</h1>
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Secteur Index</h1>
 
-        <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-            <thead class="bg-gray-200 text-gray-700">
-                <tr>
-                    <th class="py-2 px-4 border-b">Id</th>
-                    <th class="py-2 px-4 border-b">Nom</th>
-                    <th class="py-2 px-4 border-b">Description</th>
-                    <th class="py-2 px-4 border-b">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="text-gray-600">
-                {% for secteur in secteurs %}
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+                <thead class="bg-gray-200 text-gray-700">
                     <tr>
-                        <td class="py-2 px-4 border-b">{{ secteur.id }}</td>
-                        <td class="py-2 px-4 border-b">{{ secteur.nom }}</td>
-                        <td class="py-2 px-4 border-b">{{ secteur.description }}</td>
-                        <td class="py-2 px-4 border-b">
-                            <a href="{{ path('app_secteur_show', {'id': secteur.id}) }}" class="text-blue-500 hover:underline mr-2">Show</a>
-                            <a href="{{ path('app_secteur_edit', {'id': secteur.id}) }}" class="text-green-500 hover:underline">Edit</a>
-                        </td>
+                        <th class="py-3 px-6 border-b">Id</th>
+                        <th class="py-3 px-6 border-b">Nom</th>
+                        <th class="py-3 px-6 border-b">Description</th>
+                        <th class="py-3 px-6 border-b">Actions</th>
                     </tr>
-                {% else %}
-                    <tr>
-                        <td class="py-2 px-4 border-b" colspan="4">No records found</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="text-gray-700">
+                    {% for secteur in secteurs %}
+                        <tr>
+                            <td class="py-3 px-6 border-b">{{ secteur.id }}</td>
+                            <td class="py-3 px-6 border-b">{{ secteur.nom }}</td>
+                            <td class="py-3 px-6 border-b">{{ secteur.description }}</td>
+                            <td class="py-3 px-6 border-b">
+                                <a href="{{ path('app_secteur_show', {'id': secteur.id}) }}" class="text-blue-500 hover:underline mr-4">Show</a>
+                                <a href="{{ path('app_secteur_edit', {'id': secteur.id}) }}" class="text-green-500 hover:underline">Edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td class="py-3 px-6 border-b text-center" colspan="4">No records found</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-        <a href="{{ path('app_secteur_new') }}" class="mt-4 bg-green-500 text-white py-2 px-4 rounded inline-block">Create new</a>
+        <a href="{{ path('app_secteur_new') }}" class="mt-6 bg-green-500 text-white py-2 px-6 rounded inline-block hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-800">
+            Create New
+        </a>
     </div>
 {% endblock %}
