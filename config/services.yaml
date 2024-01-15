@@ -20,15 +20,6 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    # Explicitly define services for EntityManagerInterface and UserPasswordEncoderInterface
-    Doctrine\ORM\EntityManagerInterface:
-        alias: doctrine.orm.entity_manager
-
-    #Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface:
-    #    alias: security.password_encoder
-
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
     App\Command\EncryptStudentDataCommand:
         arguments:
             $entityManager: '@doctrine.orm.entity_manager'
