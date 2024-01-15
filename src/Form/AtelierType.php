@@ -3,6 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Atelier;
+use App\Entity\Salle;
+use App\Repository\SalleRepository;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Console\Input\Input;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -30,14 +34,14 @@ class AtelierType extends AbstractType
                     'class' => 'border rounded py-2 px-3 w-full mb-2', // Style pour le champ "salle"
                 ],
             ])
-            ->add('salle', null, [
+            ->add('salle', EntityType::class, [
+                'class' => Salle::class,
+                'choice_label' => 'nom',
+                'multiple' => false,
+                'expanded' => false,
+                'by_reference' => false,
                 'attr' => [
                     'class' => 'border rounded py-2 px-3 w-full mb-2', // Style pour le champ "salle"
-                ],
-            ])
-            ->add('inscription', null, [
-                'attr' => [
-                    'class' => 'border rounded py-2 px-3 w-full mb-2', // Style pour le champ "inscription"
                 ],
             ])
             ->add('secteur', null, [

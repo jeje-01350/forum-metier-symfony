@@ -20,7 +20,7 @@ class Secteur
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $descritpion = null;
+    private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'secteurs')]
     private ?Forum $forum = null;
@@ -30,7 +30,6 @@ class Secteur
 
     public function __construct()
     {
-        $this->forum = new ArrayCollection();
         $this->ateliers = new ArrayCollection();
     }
 
@@ -51,17 +50,17 @@ class Secteur
         return $this;
     }
 
-    public function getDescritpion(): ?string
+    public function getDescription(): ?string
     {
-        return $this->descritpion;
+        return $this->description;
     }
 
-    public function setDescritpion(?string $descritpion): static
+    public function setDescription(?string $description): void
     {
-        $this->descritpion = $descritpion;
-
-        return $this;
+        $this->description = $description;
     }
+
+
 
     public function getForum(): ?Forum
     {

@@ -10,7 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>Descritpion</th>
+                <th>Description</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ secteur.id }}</td>
                 <td>{{ secteur.nom }}</td>
-                <td>{{ secteur.descritpion }}</td>
+                <td>{{ secteur.description }}</td>
                 <td>
                     <a href="{{ path('app_secteur_show', {'id': secteur.id}) }}">show</a>
                     <a href="{{ path('app_secteur_edit', {'id': secteur.id}) }}">edit</a>
