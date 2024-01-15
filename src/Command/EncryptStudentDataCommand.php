@@ -18,7 +18,7 @@ use App\Entity\Lyceen;
 
 #[AsCommand(
     name: 'EncryptStudentDataCommand',
-    description: 'Encrypts personal data of students in the database after one month',
+    description: 'Commande pour chiffrer les données personnelles des élèves',
 )]
 class EncryptStudentDataCommand extends Command
 {
@@ -40,7 +40,7 @@ class EncryptStudentDataCommand extends Command
     {
         $this
             ->setName('app:encrypt-student-data')
-            ->setDescription('Encrypts personal data of students in the database after one month');
+            ->setDescription('Commande pour chiffrer les données personnelles des élèves');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
