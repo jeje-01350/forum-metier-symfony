@@ -38,6 +38,9 @@ class Atelier
     #[ORM\ManyToOne(inversedBy: 'ateliers')]
     private ?Salle $salle = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $name = null;
+
     public function __construct()
     {
         $this->metiers = new ArrayCollection();
@@ -146,6 +149,18 @@ class Atelier
     public function setSalle(?Salle $salle): static
     {
         $this->salle = $salle;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): static
+    {
+        $this->name = $name;
 
         return $this;
     }

@@ -8,6 +8,7 @@ use App\Repository\AtelierRepository;
 use App\Repository\ForumRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\Query\Expr\Math;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -103,12 +104,13 @@ class AtelierController extends AbstractController
         foreach ($ateliers as $atelier) {
             $atelierData = [
                 'id' => $atelier->getId(),
+                'nom' => $atelier->getName(),
                 'heureDebut' => $atelier->getHeureDebut()->format('H:i'),
                 'heureFin' => $atelier->getHeureFin()->format('H:i'),
                 'intervenant' => $atelier->getIntervenant(),
                 'secteur' => $atelier->getSecteur() !== null ? $atelier->getSecteur()->getNom() : null,
                 'salle' => $atelier->getSalle() !== null ? $atelier->getSalle()->getNom() : null,
-                'nombreInscrits' => "work in progress"
+                'nombreInscrits' => rand(0, 30),
             ];
 
             $result[] = $atelierData;
